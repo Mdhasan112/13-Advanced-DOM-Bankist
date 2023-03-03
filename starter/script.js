@@ -29,6 +29,42 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+///////////////////////////////////////
+// Button scrolling
+const buttonScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+buttonScrollTo.addEventListener('click', function (e) {
+  const s1coors = section1.getBoundingClientRect();
+  console.log(s1coors);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  //scrolling
+  // window.scrollTo(
+  //   s1coors.left + window.pageXOffset,
+  //   s1coors.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coors.left + window.pageXOffset,
+  //   top: s1coors.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+///////////////////////////////////////
+
 ///////////////////////////////////////
 ///////////////////////////////////////
 
