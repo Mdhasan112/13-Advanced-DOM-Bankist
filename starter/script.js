@@ -298,3 +298,15 @@ console.log(h1.nextSibling);
 console.log(h1.parentElement.children);
 ///////////////////////////////////////
 */
+
+/*
+///////////////////////////////////////
+//Sticky navigation
+const initialCoords = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function () {
+  if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
+///////////////////////////////////////
+*/
