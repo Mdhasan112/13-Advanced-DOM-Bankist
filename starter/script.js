@@ -94,7 +94,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 //Tabbed component
 tabContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
-  console.log(clicked);
+  // console.log(clicked);
 
   //Guard clause
   if (!clicked) return;
@@ -131,7 +131,7 @@ const handleHover = function (e) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
-///////////////////////////////////////
+/////////////////////////////////////
 // Sticky navigation: Intersection Observer API
 
 const header = document.querySelector('.header');
@@ -153,7 +153,31 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 
 headerObserver.observe(header);
 
-///////////////////////////////////////
+/////////////////////////////////////
+//Reveal sections
+const allSections = document.querySelectorAll('.section');
+
+const revealSections = function (entries, observer) {
+  const [entry] = entries;
+  // console.log(entry);
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSections, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
+
+/////////////////////////////////////
 ///////////////////////////////////////
 ///////////////////////////////////////
 
